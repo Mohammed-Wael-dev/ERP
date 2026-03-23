@@ -1,7 +1,7 @@
 .sidebar {
     width: 260px;
     height: 100vh;
-    background: white;
+    background: var(--color-bg-card);
     border-right: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
@@ -44,7 +44,7 @@
 .logoText {
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--color-text-primary);
+    color: var(--color-text-main);
     font-family: var(--font-heading);
 }
 
@@ -71,12 +71,12 @@
 }
 
 .navItem:hover {
-    background: var(--color-slate-50);
-    color: var(--color-text-primary);
+    background: color-mix(in srgb, var(--color-text-main) 6%, var(--color-bg-card));
+    color: var(--color-text-main);
 }
 
 .navItem.active {
-    background: var(--color-primary-50);
+    background: color-mix(in srgb, var(--color-primary-600) 20%, var(--color-bg-card));
     color: var(--color-primary-600);
     font-weight: 600;
 }

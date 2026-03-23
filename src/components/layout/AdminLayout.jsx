@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
-import FinancialDrawer from '../../pages/dashboard/accounting/FinancialDrawer';
+import FinancialDrawer from '@/components/Accounting/FinancialDrawer';
 
 const AdminLayout = () => {
     return (

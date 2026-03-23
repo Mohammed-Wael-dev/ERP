@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Card from '../../components/common/Card';
-import Button from '../../components/common/Button';
+import Card from '../../components/Shared/Card';
+import Button from '../../components/Shared/Button';
 import { ArrowLeft, Printer, Download, Share2 } from 'lucide-react';
 
 const PayslipPreview = () => {

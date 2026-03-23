@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from '../../components/common/Card';
-import Button from '../../components/common/Button';
+import Card from '../../components/Shared/Card';
+import Button from '../../components/Shared/Button';
 import { FileText, Download, Calendar, Eye } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 

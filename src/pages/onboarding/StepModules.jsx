@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../../components/common/Card';
+import Card from '../../components/Shared/Card';
 import { Layers, Users, Package } from 'lucide-react';
 
 const modulesList = [
@@ -33,25 +33,27 @@ const StepModules = ({ data, updateData }) => {
                             style={{
                                 cursor: 'pointer',
                                 border: isSelected ? '2px solid var(--color-primary-500)' : '1px solid var(--color-border)',
-                                background: isSelected ? 'var(--color-primary-50)' : 'var(--color-bg-surface)',
+                                background: isSelected
+                                    ? 'color-mix(in srgb, var(--color-primary-600) 18%, var(--color-bg-card))'
+                                    : 'var(--color-bg-card)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '1rem'
                             }}
                             onClick={() => toggleModule(mod.id)}
                         >
-                            <div style={{ color: isSelected ? 'var(--color-primary-600)' : 'var(--color-text-muted)' }}>
+                            <div style={{ color: isSelected ? 'var(--color-primary-500)' : 'var(--color-text-muted)' }}>
                                 {mod.icon}
                             </div>
                             <div style={{ flex: 1 }}>
-                                <h4 style={{ fontWeight: 600 }}>{mod.name}</h4>
+                                <h4 style={{ fontWeight: 600, color: 'var(--color-text-main)' }}>{mod.name}</h4>
                                 <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>{mod.desc}</p>
                             </div>
                             <div style={{
                                 width: '1.25rem',
                                 height: '1.25rem',
                                 borderRadius: '50%',
-                                border: isSelected ? 'none' : '2px solid var(--color-slate-300)',
+                                border: isSelected ? 'none' : '2px solid var(--color-border)',
                                 background: isSelected ? 'var(--color-primary-600)' : 'transparent',
                                 display: 'flex',
                                 alignItems: 'center',

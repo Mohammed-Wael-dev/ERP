@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from '../../components/common/Button';
+import Button from '../../components/Shared/Button';
 import { ArrowRight, PlayCircle } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -11,19 +11,19 @@ const HeroSection = () => {
     return (
         <section style={{
             padding: '6rem 0 4rem',
-            background: 'linear-gradient(180deg, var(--color-bg-body) 0%, var(--color-primary-50) 100%)',
+            background: 'linear-gradient(180deg, var(--color-bg-body) 0%, var(--color-bg-surface) 100%)',
             position: 'relative',
             overflow: 'hidden'
         }}>
-            {/* Background decoration */}
+            {/* Background decoration — uses surface/body so dark theme stays coherent (no fixed light primary tints) */}
             <div style={{
                 position: 'absolute',
                 top: '-10%',
                 [isRtl ? 'left' : 'right']: '-5%',
                 width: '40%',
                 height: '60%',
-                background: 'radial-gradient(circle, var(--color-primary-200) 0%, transparent 70%)',
-                opacity: 0.4,
+                background: 'radial-gradient(circle, var(--color-primary-600) 0%, transparent 70%)',
+                opacity: 0.12,
                 zIndex: 0,
                 filter: 'blur(60px)'
             }} />
@@ -35,7 +35,7 @@ const HeroSection = () => {
                     gap: '0.5rem',
                     padding: '0.5rem 1rem',
                     background: 'var(--color-bg-surface)',
-                    border: '1px solid var(--color-primary-200)',
+                    border: '1px solid var(--color-border)',
                     borderRadius: '2rem',
                     marginBottom: '2rem',
                     fontSize: '0.875rem',
@@ -52,20 +52,17 @@ const HeroSection = () => {
                     v2.0 is now live with enhanced Analytics
                 </div>
 
+                {/* Solid theme colors only — avoid background-clip:text on a parent with mixed child fills (causes wrong blocks in light/dark) */}
                 <h1 style={{
                     fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
                     fontWeight: 800,
                     lineHeight: 1.1,
                     marginBottom: '1.5rem',
                     letterSpacing: '-0.02em',
-                    background: 'linear-gradient(to right, var(--color-slate-900), var(--color-slate-700))',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
+                    color: 'var(--color-text-main)'
                 }}>
                     Unified Management for <br />
-                    <span style={{ color: 'var(--color-primary-600)', WebkitTextFillColor: 'var(--color-primary-600)' }}>
-                        Global Enterprise
-                    </span>
+                    <span style={{ color: 'var(--color-primary-600)' }}>Global Enterprise</span>
                 </h1>
 
                 <p style={{
@@ -107,7 +104,7 @@ const HeroSection = () => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        background: 'var(--color-slate-50)'
+                        background: 'var(--color-bg-body)'
                     }}>
                         <span style={{ color: 'var(--color-text-muted)', fontSize: '1.5rem' }}>Dashboard Preview Image</span>
                     </div>

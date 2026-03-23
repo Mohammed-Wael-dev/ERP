@@ -1,9 +1,9 @@
 import React from 'react';
-import Card from '../../components/common/Card';
-import Button from '../../components/common/Button';
+import Card from '../../components/Shared/Card';
+import Button from '../../components/Shared/Button';
 
 
-import Input from '../../components/common/Input';
+import Input from '../../components/Shared/Input';
 import { Calendar, FileText, Clock, Plus, CheckCircle, XCircle } from 'lucide-react';
 
 const EmployeeDashboard = () => {

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { useLanguage, languages } from '../context/LanguageContext';
 import { Moon, Sun } from 'lucide-react';
-import Button from '../components/common/Button';
+import Button from '../components/Shared/Button';
 import HeroSection from './landing/HeroSection';
 import FeaturesSection from './landing/FeaturesSection';
 import PricingSection from './landing/PricingSection';

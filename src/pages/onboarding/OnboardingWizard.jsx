@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAccounting } from '../../context/AccountingContext';
-import AuthLayout from '../../components/layout/AuthLayout';
-import Button from '../../components/common/Button';
+import AuthLayout from '../../components/Layout/AuthLayout';
+import Button from '../../components/Shared/Button';
 import StepCompanyInfo from './StepCompanyInfo';
 import StepRegionalSettings from './StepRegionalSettings';
 import StepModules from './StepModules';
@@ -67,7 +67,7 @@ const OnboardingWizard = () => {
                         style={{
                             flex: 1,
                             height: '4px',
-                            background: step.id <= currentStep ? 'var(--color-primary-600)' : 'var(--color-slate-200)',
+                            background: step.id <= currentStep ? 'var(--color-primary-600)' : 'var(--color-border)',
                             borderRadius: '2px',
                             transition: 'background 0.3s ease'
                         }}

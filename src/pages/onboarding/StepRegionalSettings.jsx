@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from '../../components/common/Input';
+import Input from '../../components/Shared/Input';
 
 const StepRegionalSettings = ({ data, updateData }) => {
     return (
@@ -34,10 +34,19 @@ const StepRegionalSettings = ({ data, updateData }) => {
                 </select>
             </div>
 
-            <div style={{ padding: '1rem', background: 'var(--color-slate-100)', borderRadius: 'var(--radius-md)' }}>
-                <h4 style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.5rem' }}>Auto-Configuration</h4>
+            <div
+                style={{
+                    padding: '1rem',
+                    borderRadius: 'var(--radius-md)',
+                    border: '1px solid var(--color-border)',
+                    background: 'color-mix(in srgb, var(--color-primary-600) 12%, var(--color-bg-card))',
+                }}
+            >
+                <h4 style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '0.5rem', color: 'var(--color-text-main)' }}>
+                    Auto-Configuration
+                </h4>
                 <p style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)' }}>
-                    Based on your selection of <strong>{data.country.toUpperCase()}</strong>, we will automatically apply localized tax rules, chart of accounts, and payroll policies.
+                    Based on your selection of <strong style={{ color: 'var(--color-text-main)' }}>{data.country.toUpperCase()}</strong>, we will automatically apply localized tax rules, chart of accounts, and payroll policies.
                 </p>
             </div>
         </div>

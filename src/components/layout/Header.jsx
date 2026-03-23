@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { Moon, Sun, Bell, Search, Globe, ChevronDown } from 'lucide-react';
-import Input from '../common/Input';
+import Input from '../Shared/Input';
 
 const Header = () => {
     const { theme, toggleTheme } = useTheme();
