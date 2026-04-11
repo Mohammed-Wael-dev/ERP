@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Card from '../../components/common/Card';
-import Button from '../../components/common/Button';
-import Input from '../../components/common/Input';
+import Card from '@/components/Shared/Card';
+import Button from '@/components/Shared/Button';
+import Input from '@/components/Shared/Input';
 import { Save, Globe, Lock, Bell, Shield } from 'lucide-react';
-import TaxSettings from './settings/TaxSettings';
+import TaxSettings from './TaxSettings';
 
 const Settings = () => {
     const navigate = useNavigate();
@@ -21,7 +21,7 @@ const Settings = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <div>
-                <h1 style={{ fontSize: '1.75rem', fontWeight: 700 }}>Settings</h1>
+                <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)' }}>Settings</h1>
                 <p style={{ color: 'var(--color-text-secondary)' }}>Manage your workspace preferences.</p>
             </div>
 
@@ -38,8 +38,10 @@ const Settings = () => {
                                 gap: '0.75rem',
                                 padding: '0.75rem 1rem',
                                 border: 'none',
-                                background: activeTab === tab.id ? 'var(--color-primary-50)' : 'transparent',
-                                color: activeTab === tab.id ? 'var(--color-primary-700)' : 'var(--color-text-secondary)',
+                                background: activeTab === tab.id
+                                    ? 'color-mix(in srgb, var(--color-primary-600) 20%, var(--color-bg-card))'
+                                    : 'transparent',
+                                color: activeTab === tab.id ? 'var(--color-primary-500)' : 'var(--color-text-secondary)',
                                 borderRadius: 'var(--radius-md)',
                                 fontWeight: activeTab === tab.id ? 600 : 400,
                                 cursor: 'pointer',

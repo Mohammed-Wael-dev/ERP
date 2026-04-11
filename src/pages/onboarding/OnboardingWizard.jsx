@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAccounting } from '../../context/AccountingContext';
-import AuthLayout from '../../components/Layout/AuthLayout';
+import AuthLayout from '@/components/app-layout/AuthLayout';
 import Button from '../../components/Shared/Button';
 import StepCompanyInfo from './StepCompanyInfo';
 import StepRegionalSettings from './StepRegionalSettings';

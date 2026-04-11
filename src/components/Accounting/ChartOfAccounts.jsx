@@ -22,6 +22,7 @@ const ChartOfAccounts = () => {
     const [filterSource, setFilterSource] = useState('All'); // 'All', 'System', 'Custom'
 
     const [expandedNodes, setExpandedNodes] = useState(new Set());
+    const [hoveredAccountId, setHoveredAccountId] = useState(null);
 
     // Modal State
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -186,10 +187,15 @@ const ChartOfAccounts = () => {
             const hasVisibleChildren = accounts.some(a => a.parentCode === acc.code && filteredAccountIds.has(a.id));
             const depth = level;
 
+            const rowBaseBg = level === 0
+                ? 'color-mix(in srgb, var(--color-primary-600) 8%, var(--color-bg-card))'
+                : 'var(--color-bg-card)';
             const rowStyle = {
-                borderBottom: '1px solid var(--color-slate-100)',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                background: level === 0 ? 'rgba(var(--color-primary-rgb), 0.03)' : 'white',
+                borderBottom: '1px solid var(--color-border)',
+                transition: 'background 0.2s ease',
+                background: hoveredAccountId === acc.id
+                    ? 'color-mix(in srgb, var(--color-text-main) 8%, var(--color-bg-card))'
+                    : rowBaseBg,
             };
 
             const nameCardStyle = {
@@ -210,7 +216,7 @@ const ChartOfAccounts = () => {
                 top: '-1.75rem',
                 bottom: '1.75rem',
                 width: '1.5px',
-                background: 'var(--color-slate-200)',
+                background: 'var(--color-border)',
                 zIndex: 0
             } : {};
 
@@ -221,7 +227,7 @@ const ChartOfAccounts = () => {
                 top: '50%',
                 width: '0.75rem',
                 height: '1.5px',
-                background: 'var(--color-slate-200)',
+                background: 'var(--color-border)',
                 zIndex: 0
             } : {};
 
@@ -244,11 +250,16 @@ const ChartOfAccounts = () => {
 
             return (
                 <React.Fragment key={acc.id}>
-                    <tr style={rowStyle} className="group hover:bg-slate-50">
+                    <tr
+                        style={rowStyle}
+                        onMouseEnter={() => setHoveredAccountId(acc.id)}
+                        onMouseLeave={() => setHoveredAccountId(null)}
+                    >
                         <td style={{ padding: '0 1rem', width: '120px' }}>
                             <span style={{
                                 fontFamily: 'var(--font-mono)', fontSize: '0.75rem', fontWeight: 600,
-                                color: 'var(--color-text-muted)', background: 'var(--color-slate-50)',
+                                color: 'var(--color-text-muted)',
+                                background: 'color-mix(in srgb, var(--color-text-main) 8%, var(--color-bg-card))',
                                 padding: '2px 6px', borderRadius: '4px'
                             }}>
                                 {highlightText(acc.code, searchTerm)}
@@ -264,7 +275,9 @@ const ChartOfAccounts = () => {
                                         <button
                                             onClick={() => toggleExpand(acc.code)}
                                             style={{
-                                                background: isExpanded ? 'var(--color-primary-50)' : 'white',
+                                                background: isExpanded
+                                                    ? 'color-mix(in srgb, var(--color-primary-600) 20%, var(--color-bg-card))'
+                                                    : 'var(--color-bg-surface)',
                                                 border: '1px solid var(--color-border)',
                                                 borderRadius: '6px',
                                                 width: '24px', height: '24px',
@@ -282,8 +295,10 @@ const ChartOfAccounts = () => {
                                     {acc.isGroup ? (
                                         <div style={{
                                             width: '32px', height: '32px', borderRadius: '8px',
-                                            background: level === 0 ? 'var(--color-primary-600)' : 'var(--color-primary-50)',
-                                            color: level === 0 ? 'white' : 'var(--color-primary-600)',
+                                            background: level === 0
+                                                ? 'var(--color-primary-600)'
+                                                : 'color-mix(in srgb, var(--color-primary-600) 22%, var(--color-bg-card))',
+                                            color: level === 0 ? '#fff' : 'var(--color-primary-500)',
                                             display: 'flex', alignItems: 'center', justifyContent: 'center'
                                         }}>
                                             <Folder size={18} fill={level === 0 ? 'rgba(255,255,255,0.2)' : 'none'} />
@@ -291,8 +306,8 @@ const ChartOfAccounts = () => {
                                     ) : (
                                         <div style={{
                                             width: '32px', height: '32px', borderRadius: '8px',
-                                            background: 'var(--color-slate-50)',
-                                            color: 'var(--color-slate-400)',
+                                            background: 'color-mix(in srgb, var(--color-text-main) 10%, var(--color-bg-card))',
+                                            color: 'var(--color-text-secondary)',
                                             display: 'flex', alignItems: 'center', justifyContent: 'center'
                                         }}>
                                             <FileText size={18} />
@@ -319,8 +334,10 @@ const ChartOfAccounts = () => {
                         <td style={{ padding: '0 1rem' }}>
                             <span style={{
                                 padding: '0.2rem 0.6rem', borderRadius: '6px', fontSize: '0.7rem', fontWeight: 650,
-                                background: level === 0 ? 'var(--color-primary-50)' : 'var(--color-slate-50)',
-                                color: level === 0 ? 'var(--color-primary-700)' : 'var(--color-text-muted)',
+                                background: level === 0
+                                    ? 'color-mix(in srgb, var(--color-primary-600) 22%, var(--color-bg-card))'
+                                    : 'color-mix(in srgb, var(--color-text-main) 8%, var(--color-bg-card))',
+                                color: level === 0 ? 'var(--color-primary-500)' : 'var(--color-text-muted)',
                                 border: '1px solid currentColor', opacity: 0.7
                             }}>
                                 {acc.type}
@@ -329,7 +346,7 @@ const ChartOfAccounts = () => {
                         <td style={{ padding: '0 1rem' }}>
                             <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'flex-end' }}>
                                 <IconButton icon={<Monitor size={16} />} color="var(--color-primary-600)" onClick={() => openDrawer('Account', acc.id)} title="Activity" />
-                                <IconButton icon={<Edit3 size={16} />} color="var(--color-slate-600)" onClick={() => handleEditClick(acc)} title="Edit" />
+                                <IconButton icon={<Edit3 size={16} />} color="var(--color-text-secondary)" onClick={() => handleEditClick(acc)} title="Edit" />
                                 {!acc.isSystem && (
                                     <IconButton icon={<Trash2 size={16} />} color="var(--color-danger-600)" onClick={() => handleDeleteClick(acc.id)} title="Delete" />
                                 )}
@@ -347,7 +364,7 @@ const ChartOfAccounts = () => {
             {/* Header */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end' }}>
                 <div>
-                    <h1 style={{ fontSize: '1.75rem', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--color-slate-900)' }}>{t.title}</h1>
+                    <h1 style={{ fontSize: '1.75rem', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--color-text-main)' }}>{t.title}</h1>
                     <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.95rem' }}>
                         {t.subtitle}
                     </p>
@@ -359,7 +376,7 @@ const ChartOfAccounts = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                     <Card className="padding-none" style={{ flex: 1, display: 'flex', alignItems: 'center', height: '3.5rem', overflow: 'hidden', border: searchTerm ? '2px solid var(--color-primary-200)' : '1px solid var(--color-border)' }}>
-                        <div style={{ padding: '0 1.25rem', color: 'var(--color-slate-400)' }}><Search size={20} /></div>
+                        <div style={{ padding: '0 1.25rem', color: 'var(--color-text-muted)' }}><Search size={20} /></div>
                         <input
                             type="text"
                             placeholder={t.searchPlaceholder}
@@ -367,11 +384,13 @@ const ChartOfAccounts = () => {
                             onChange={e => setSearchTerm(e.target.value)}
                             style={{
                                 flex: 1, border: 'none', background: 'transparent', height: '100%',
-                                fontSize: '1rem', outline: 'none', fontWeight: 500, direction: language === 'ar' ? 'rtl' : 'ltr'
+                                fontSize: '1rem', outline: 'none', fontWeight: 500,
+                                color: 'var(--color-text-main)',
+                                direction: language === 'ar' ? 'rtl' : 'ltr'
                             }}
                         />
                         {searchTerm && (
-                            <button onClick={() => setSearchTerm('')} style={{ padding: '0 1rem', background: 'none', border: 'none', color: 'var(--color-slate-400)', cursor: 'pointer' }}>
+                            <button onClick={() => setSearchTerm('')} style={{ padding: '0 1rem', background: 'none', border: 'none', color: 'var(--color-text-muted)', cursor: 'pointer' }}>
                                 <X size={18} />
                             </button>
                         )}
@@ -385,7 +404,11 @@ const ChartOfAccounts = () => {
 
                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                     {/* Type Filter */}
-                    <div style={{ display: 'flex', background: 'var(--color-slate-50)', padding: '4px', borderRadius: '12px', border: '1px solid var(--color-slate-200)' }}>
+                    <div style={{
+                        display: 'flex',
+                        background: 'color-mix(in srgb, var(--color-text-main) 6%, var(--color-bg-body))',
+                        padding: '4px', borderRadius: '12px', border: '1px solid var(--color-border)'
+                    }}>
                         {['All', 'Asset', 'Liability', 'Equity', 'Revenue', 'Expense'].map(type => (
                             <FilterChip
                                 key={type}
@@ -397,7 +420,11 @@ const ChartOfAccounts = () => {
                     </div>
 
                     {/* Source Filter */}
-                    <div style={{ display: 'flex', background: 'var(--color-slate-50)', padding: '4px', borderRadius: '12px', border: '1px solid var(--color-slate-200)' }}>
+                    <div style={{
+                        display: 'flex',
+                        background: 'color-mix(in srgb, var(--color-text-main) 6%, var(--color-bg-body))',
+                        padding: '4px', borderRadius: '12px', border: '1px solid var(--color-border)'
+                    }}>
                         <FilterChip active={filterSource === 'All'} onClick={() => setFilterSource('All')} label={t.allSources} />
                         <FilterChip active={filterSource === 'System'} onClick={() => setFilterSource('System')} label={t.systemOnly} icon={<Lock size={12} />} />
                         <FilterChip active={filterSource === 'Custom'} onClick={() => setFilterSource('Custom')} label={t.customOnly} icon={<Shield size={12} />} />
@@ -415,21 +442,21 @@ const ChartOfAccounts = () => {
             <Card className="padding-none" style={{ border: 'none', boxShadow: '0 10px 30px rgba(0,0,0,0.04)' }}>
                 <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: 0 }}>
                     <thead>
-                        <tr style={{ background: 'white', borderBottom: '2px solid var(--color-slate-100)' }}>
+                        <tr style={{ background: 'var(--color-bg-card)', borderBottom: '2px solid var(--color-border)' }}>
                             <th style={thStyle}>{t.colCode}</th>
                             <th style={thStyle}>{t.colName}</th>
                             <th style={thStyle}>{t.colType}</th>
                             <th style={{ ...thStyle, textAlign: 'right' }}>{t.colActions}</th>
                         </tr>
                     </thead>
-                    <tbody style={{ background: 'white' }}>
+                    <tbody style={{ background: 'var(--color-bg-card)' }}>
                         {renderAccountTree()}
                         {filteredAccountIds.size === 0 && (
                             <tr>
                                 <td colSpan="4" style={{ padding: '4rem 2rem', textAlign: 'center' }}>
                                     <div style={{ opacity: 0.5, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
                                         <Search size={48} />
-                                        <p style={{ fontWeight: 600 }}>{language === 'ar' ? 'لا توجد نتائج تطابق بحثك' : 'No matches found'}</p>
+                                        <p style={{ fontWeight: 600, color: 'var(--color-text-main)' }}>{language === 'ar' ? 'لا توجد نتائج تطابق بحثك' : 'No matches found'}</p>
                                         <Button variant="outline" onClick={resetFilters}>{t.reset}</Button>
                                     </div>
                                 </td>
@@ -444,10 +471,14 @@ const ChartOfAccounts = () => {
                 <div style={modalOverlayStyle}>
                     <Card className="padding-xl" style={{ width: '550px', maxWidth: '95%', borderRadius: '24px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-                            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-0.02em' }}>
+                            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--color-text-main)' }}>
                                 {editingAccount ? t.modalEdit : t.modalAdd}
                             </h2>
-                            <button onClick={() => setIsModalOpen(false)} style={{ background: 'var(--color-slate-50)', border: 'none', padding: '8px', borderRadius: '50%', cursor: 'pointer' }}>
+                            <button onClick={() => setIsModalOpen(false)} style={{
+                                background: 'color-mix(in srgb, var(--color-text-main) 8%, var(--color-bg-surface))',
+                                border: '1px solid var(--color-border)', color: 'var(--color-text-main)',
+                                padding: '8px', borderRadius: '50%', cursor: 'pointer'
+                            }}>
                                 <X size={20} />
                             </button>
                         </div>
@@ -521,11 +552,11 @@ const FilterChip = ({ active, onClick, label, icon }) => (
     <button
         onClick={onClick}
         style={{
-            padding: '6px 12px', borderRadius: '8px', border: 'none', cursor: 'pointer',
+            padding: '6px 12px', borderRadius: '8px', border: active ? '1px solid var(--color-border)' : 'none', cursor: 'pointer',
             fontSize: '0.75rem', fontWeight: 600, transition: 'all 0.2s',
-            background: active ? 'white' : 'transparent',
-            color: active ? 'var(--color-primary-600)' : 'var(--color-slate-500)',
-            boxShadow: active ? '0 2px 4px rgba(0,0,0,0.05)' : 'none',
+            background: active ? 'var(--color-bg-surface)' : 'transparent',
+            color: active ? 'var(--color-primary-600)' : 'var(--color-text-secondary)',
+            boxShadow: active ? '0 1px 2px color-mix(in srgb, var(--color-text-main) 8%, transparent)' : 'none',
             display: 'flex', alignItems: 'center', gap: '0.5rem'
         }}
     >
@@ -540,25 +571,31 @@ const thStyle = {
     fontWeight: 700,
     textTransform: 'uppercase',
     letterSpacing: '0.08em',
-    color: 'var(--color-slate-400)',
+    color: 'var(--color-text-muted)',
     textAlign: 'left'
 };
 
-const IconButton = ({ icon, color, onClick, title }) => (
-    <button
-        onClick={onClick}
-        title={title}
-        style={{
-            background: 'none', border: 'none', cursor: 'pointer',
-            padding: '6px', borderRadius: '8px',
-            color: color, transition: 'all 0.2s',
-            display: 'flex', alignItems: 'center', justifyContent: 'center'
-        }}
-        className="hover:bg-white hover:shadow-sm"
-    >
-        {React.cloneElement(icon, { size: 18, opacity: 0.8 })}
-    </button>
-);
+const IconButton = ({ icon, color, onClick, title }) => {
+    const [hover, setHover] = useState(false);
+    return (
+        <button
+            onClick={onClick}
+            title={title}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            style={{
+                background: hover ? 'color-mix(in srgb, var(--color-text-main) 8%, var(--color-bg-card))' : 'none',
+                border: 'none', cursor: 'pointer',
+                padding: '6px', borderRadius: '8px',
+                color, transition: 'background 0.15s ease',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                boxShadow: hover ? '0 1px 2px color-mix(in srgb, var(--color-text-main) 6%, transparent)' : 'none'
+            }}
+        >
+            {React.cloneElement(icon, { size: 18, opacity: 0.8 })}
+        </button>
+    );
+};
 
 const modalOverlayStyle = {
     position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
@@ -567,11 +604,11 @@ const modalOverlayStyle = {
 };
 
 const selectWrapperStyle = { display: 'flex', flexDirection: 'column', gap: '0.5rem' };
-const labelStyle = { fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-slate-700)' };
+const labelStyle = { fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-text-main)' };
 const selectStyle = {
     height: '3rem', padding: '0 1rem', borderRadius: '12px',
-    border: '1px solid var(--color-slate-200)', appearance: 'none',
-    background: 'var(--color-slate-50)', fontWeight: 500
+    border: '1px solid var(--color-border)', appearance: 'none',
+    background: 'var(--color-bg-surface)', color: 'var(--color-text-main)', fontWeight: 500
 };
 
 export default ChartOfAccounts;

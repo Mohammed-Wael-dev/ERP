@@ -107,8 +107,16 @@ const AdminDashboard = () => {
     const dateInputStyle = {
         padding: '0.35rem 0.5rem', borderRadius: '0.4rem',
         border: '1px solid var(--color-border)', fontSize: '0.75rem',
-        color: 'var(--color-text-main)', background: 'white',
+        color: 'var(--color-text-main)', background: 'var(--color-bg-surface)',
         outline: 'none', cursor: 'pointer'
+    };
+
+    const chartTooltipStyle = {
+        borderRadius: '8px',
+        border: '1px solid var(--color-border)',
+        boxShadow: 'var(--shadow-md)',
+        background: 'var(--color-bg-card)',
+        color: 'var(--color-text-main)'
     };
 
     return (
@@ -116,7 +124,7 @@ const AdminDashboard = () => {
 
             {/* Page Header */}
             <div>
-                <h1 style={{ fontSize: '1.75rem', fontWeight: 800 }}>Dashboard</h1>
+                <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-text-main)' }}>Dashboard</h1>
                 <p style={{ color: 'var(--color-text-secondary)', marginTop: '0.25rem' }}>
                     Company overview across all departments
                 </p>
@@ -147,15 +155,18 @@ const AdminDashboard = () => {
                 {/* Revenue Trend */}
                 <Card className="padding-lg">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-                        <h3 style={{ fontSize: '1rem', fontWeight: 700 }}>Revenue vs Expenses</h3>
-                        <div style={{ display: 'flex', gap: '0.25rem', background: 'var(--color-slate-100)', borderRadius: '0.5rem', padding: '3px' }}>
+                        <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--color-text-main)' }}>Revenue vs Expenses</h3>
+                        <div style={{ display: 'flex', gap: '0.25rem', background: 'color-mix(in srgb, var(--color-text-main) 8%, var(--color-bg-card))', borderRadius: '0.5rem', padding: '3px' }}>
                             {['weekly', 'monthly', 'yearly'].map(f => (
                                 <button key={f} onClick={() => setChartFilter(f)} style={{
                                     padding: '0.3rem 0.75rem', borderRadius: '0.4rem', border: 'none',
                                     fontSize: '0.75rem', fontWeight: 600, cursor: 'pointer',
-                                    background: chartFilter === f ? 'white' : 'transparent',
+                                    background: chartFilter === f ? 'var(--color-bg-surface)' : 'transparent',
                                     color: chartFilter === f ? 'var(--color-text-main)' : 'var(--color-text-muted)',
-                                    boxShadow: chartFilter === f ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
+                                    boxShadow: chartFilter === f ? '0 1px 3px rgba(0,0,0,0.12)' : 'none',
+                                    borderWidth: chartFilter === f ? '1px' : 0,
+                                    borderStyle: 'solid',
+                                    borderColor: chartFilter === f ? 'var(--color-border)' : 'transparent',
                                     transition: 'all 0.2s ease'
                                 }}>
                                     {f === 'weekly' ? 'Weekly' : f === 'monthly' ? 'Monthly' : 'Yearly'}
@@ -173,7 +184,7 @@ const AdminDashboard = () => {
                             <button onClick={() => { setDateFrom(''); setDateTo(''); }} style={{
                                 padding: '0.3rem 0.6rem', borderRadius: '0.4rem', border: '1px solid var(--color-border)',
                                 fontSize: '0.7rem', fontWeight: 600, cursor: 'pointer',
-                                background: 'white', color: 'var(--color-text-muted)'
+                                background: 'var(--color-bg-surface)', color: 'var(--color-text-muted)'
                             }}>
                                 Clear
                             </button>
@@ -195,7 +206,7 @@ const AdminDashboard = () => {
                                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--color-border)" />
                                 <XAxis dataKey="label" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'var(--color-text-secondary)' }} />
                                 <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: 'var(--color-text-secondary)' }} tickFormatter={v => v >= 1000 ? `$${v / 1000}k` : `$${v}`} />
-                                <RechartsTooltip contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} />
+                                <RechartsTooltip contentStyle={chartTooltipStyle} labelStyle={{ color: 'var(--color-text-main)' }} />
                                 <Legend iconType="circle" />
                                 <Area type="monotone" dataKey="revenue" name="Revenue" stroke="#10b981" strokeWidth={2.5} fill="url(#revGrad)" />
                                 <Area type="monotone" dataKey="expenses" name="Expenses" stroke="#ef4444" strokeWidth={2.5} fill="url(#expGrad)" />
@@ -216,7 +227,7 @@ const AdminDashboard = () => {
                                     ))}
                                 </Pie>
                                 <Legend iconType="circle" />
-                                <RechartsTooltip contentStyle={{ borderRadius: '8px', border: 'none' }} />
+                                <RechartsTooltip contentStyle={chartTooltipStyle} labelStyle={{ color: 'var(--color-text-main)' }} />
                             </PieChart>
                         </ResponsiveContainer>
                     </div>

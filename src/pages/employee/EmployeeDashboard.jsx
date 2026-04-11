@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Card from '../../components/common/Card';
-import Button from '../../components/common/Button';
-import Input from '../../components/common/Input';
+import Card from '../../components/Shared/Card';
+import Button from '../../components/Shared/Button';
+import Input from '../../components/Shared/Input';
 import { Calendar, FileText, Clock, Plus, CheckCircle, Play, Square, Timer, FolderOpen } from 'lucide-react';
 import { useHR } from '../../context/HRContext';
 

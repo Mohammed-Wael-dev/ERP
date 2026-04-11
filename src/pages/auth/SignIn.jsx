@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import AuthLayout from '../../components/layout/AuthLayout';
-import Input from '../../components/common/Input';
-import Button from '../../components/common/Button';
+import AuthLayout from '@/components/app-layout/AuthLayout';
+import Input from '../../components/Shared/Input';
+import Button from '../../components/Shared/Button';
 import { Mail, Lock, ArrowRight, Shield, User } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 

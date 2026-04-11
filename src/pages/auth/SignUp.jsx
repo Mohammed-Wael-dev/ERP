@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import AuthLayout from '../../components/Layout/AuthLayout';
+import AuthLayout from '@/components/app-layout/AuthLayout';
 import Input from '../../components/Shared/Input';
 import Button from '../../components/Shared/Button';
 import { User, Mail, Lock, ArrowRight } from 'lucide-react';

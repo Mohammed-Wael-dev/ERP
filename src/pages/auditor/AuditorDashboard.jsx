@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Card from '../../components/common/Card';
-import Button from '../../components/common/Button';
+import Card from '../../components/Shared/Card';
+import Button from '../../components/Shared/Button';
 import { useAudit } from '../../context/AuditContext';
 import { useAccounting } from '../../context/AccountingContext';
 import {

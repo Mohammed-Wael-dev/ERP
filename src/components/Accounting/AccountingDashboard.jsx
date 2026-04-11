@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Card from '../../../components/common/Card';
-import Button from '../../../components/common/Button';
+import Card from '@/components/Shared/Card';
+import Button from '@/components/Shared/Button';
 import { FileText, List, Plus, Landmark, Monitor, Percent, Users, ArrowUpRight, DollarSign, ShoppingCart, Package, Target, CheckCircle, Upload, Shield } from 'lucide-react';
 
 const AccountingDashboard = () => {
@@ -11,7 +11,7 @@ const AccountingDashboard = () => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
-                    <h1 style={{ fontSize: '1.75rem', fontWeight: 700 }}>Accounting</h1>
+                    <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)' }}>Accounting</h1>
                     <p style={{ color: 'var(--color-text-secondary)' }}>Manage your general ledger, accounts, and transactions.</p>
                 </div>
                 <div style={{ display: 'flex', gap: '1rem' }}>
@@ -28,7 +28,7 @@ const AccountingDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <List size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Chart of Accounts</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Chart of Accounts</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Manage account structure.</p>
                 </Card>
 
@@ -40,7 +40,7 @@ const AccountingDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <FileText size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>General Ledger</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>General Ledger</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>View account history.</p>
                 </Card>
 
@@ -52,7 +52,7 @@ const AccountingDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <FileText size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Journal Entries</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Journal Entries</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>View & edit entries.</p>
                 </Card>
 
@@ -64,7 +64,7 @@ const AccountingDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <FileText size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Sales Invoices</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Sales Invoices</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Manage billing & revenue.</p>
                 </Card>
 
@@ -76,7 +76,7 @@ const AccountingDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <Package size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Products & Services</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Products & Services</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Manage your catalog.</p>
                 </Card>
 
@@ -88,7 +88,7 @@ const AccountingDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <Users size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Customers</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Customers</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Manage client profiles.</p>
                 </Card>
 
@@ -100,7 +100,7 @@ const AccountingDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <Landmark size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Bank & Cash</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Bank & Cash</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Treasury management.</p>
                 </Card>
 
@@ -112,7 +112,7 @@ const AccountingDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <Monitor size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Fixed Assets</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Fixed Assets</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Track depreciation.</p>
                 </Card>
 
@@ -124,7 +124,7 @@ const AccountingDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <Percent size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Trial Balance</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Trial Balance</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Debit/Credit totals.</p>
                 </Card>
                 <Card
@@ -135,7 +135,7 @@ const AccountingDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <FileText size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Reports Center</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Reports Center</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>P&L, Balance Sheet.</p>
                 </Card>
 
@@ -147,7 +147,7 @@ const AccountingDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <Target size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Cost Centers</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Cost Centers</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Budgets & Allocation.</p>
                 </Card>
 
@@ -187,7 +187,7 @@ const AccountingDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <Upload size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Bank Import</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Bank Import</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Import bank statements.</p>
                 </Card>
 
@@ -195,15 +195,15 @@ const AccountingDashboard = () => {
                     className="padding-md hoverable"
                     style={{
                         width: '240px', cursor: 'pointer',
-                        border: '2px solid #7c3aed20',
-                        background: 'linear-gradient(to bottom right, white, #f5f3ff)'
+                        border: '1px solid color-mix(in srgb, var(--color-secondary-600) 40%, var(--color-border))',
+                        background: 'color-mix(in srgb, var(--color-secondary-600) 18%, var(--color-bg-card))'
                     }}
                     onClick={() => navigate('audit')}
                 >
-                    <div style={{ marginBottom: '1rem', color: '#7c3aed' }}>
+                    <div style={{ marginBottom: '1rem', color: 'var(--color-secondary-600)' }}>
                         <Shield size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Audit Management</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Audit Management</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>External audit & seal.</p>
                 </Card>
             </div>
@@ -211,7 +211,7 @@ const AccountingDashboard = () => {
             {/* Recent Transactions Section */}
             <Card className="padding-lg">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Recent Transactions</h3>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-text-main)' }}>Recent Transactions</h3>
                     <Button variant="ghost" size="sm" icon={<ArrowUpRight size={16} />}>View All</Button>
                 </div>
 
@@ -233,8 +233,8 @@ const AccountingDashboard = () => {
                         date="Yesterday, 2:15 PM"
                         amount="-$342.50"
                         amountColor="var(--color-text-main)"
-                        bg="var(--color-slate-100)"
-                        iconColor="var(--color-slate-600)"
+                        bg="color-mix(in srgb, var(--color-text-main) 12%, var(--color-bg-card))"
+                        iconColor="var(--color-text-secondary)"
                     />
                     <TransactionItem
                         icon={<Monitor size={18} />}
@@ -243,8 +243,8 @@ const AccountingDashboard = () => {
                         date="Feb 05, 09:00 AM"
                         amount="-$4,200.00"
                         amountColor="var(--color-text-main)"
-                        bg="var(--color-primary-50)"
-                        iconColor="var(--color-primary-600)"
+                        bg="color-mix(in srgb, var(--color-primary-600) 18%, var(--color-bg-card))"
+                        iconColor="var(--color-primary-500)"
                     />
                     <TransactionItem
                         icon={<Landmark size={18} />}

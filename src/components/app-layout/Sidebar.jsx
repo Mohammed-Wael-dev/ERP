@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import classes from './Sidebar.module.css';
+import classes from '@/components/app-layout/Sidebar.module.css';
 import {
     LayoutDashboard,
     Layers,
@@ -12,7 +12,7 @@ import {
     Tags,
     Shield
 } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 
 const navItems = [
     { to: '/admin/dashboard', icon: <LayoutDashboard size={20} />, label: 'Dashboard' },

@@ -29,7 +29,7 @@ const Organization = () => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
-                    <h1 style={{ fontSize: '1.75rem', fontWeight: 700 }}>Organization</h1>
+                    <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)' }}>Organization</h1>
                     <p style={{ color: 'var(--color-text-secondary)' }}>Manage departments, hierarchy, and job positions.</p>
                 </div>
                 <div style={{ display: 'flex', gap: '1rem' }}>
@@ -88,7 +88,7 @@ const DepartmentsView = ({ departments, onAdd, onEdit, onDelete, employees }) =>
     return (
         <Card className="padding-lg">
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem' }}>
-                <h2 style={{ fontSize: '1.25rem', fontWeight: 600 }}>Department Hierarchy</h2>
+                <h2 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Department Hierarchy</h2>
                 <Button icon={<Plus size={16} />} onClick={onAdd}>Add Department</Button>
             </div>
 
@@ -119,7 +119,7 @@ const DepartmentNode = ({ dept, allDepts, level, onEdit, onDelete, employees }) 
                 alignItems: 'center',
                 gap: '0.75rem',
                 padding: '1rem',
-                background: 'var(--color-slate-50)',
+                background: 'var(--color-bg-body)',
                 borderRadius: 'var(--radius-md)',
                 border: '1px solid var(--color-border)',
                 marginBottom: '0.5rem'
@@ -130,11 +130,16 @@ const DepartmentNode = ({ dept, allDepts, level, onEdit, onDelete, employees }) 
                 >
                     <ChevronRight size={18} style={{ transform: expanded ? 'rotate(90deg)' : 'none', transition: 'transform 0.2s' }} />
                 </div>
-                <div style={{ padding: '0.5rem', background: 'var(--color-primary-100)', borderRadius: '0.5rem', color: 'var(--color-primary-700)' }}>
+                <div style={{
+                    padding: '0.5rem',
+                    background: 'color-mix(in srgb, var(--color-primary-600) 22%, var(--color-bg-card))',
+                    borderRadius: '0.5rem',
+                    color: 'var(--color-primary-500)'
+                }}>
                     <Building2 size={20} />
                 </div>
                 <div style={{ flex: 1 }}>
-                    <div style={{ fontWeight: 600 }}>{dept.name}</div>
+                    <div style={{ fontWeight: 600, color: 'var(--color-text-main)' }}>{dept.name}</div>
                     <div style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <User size={14} /> Head: {managerName} • {deptEmployees.length} Members
                     </div>
@@ -158,7 +163,13 @@ const DepartmentNode = ({ dept, allDepts, level, onEdit, onDelete, employees }) 
                                     borderLeft: '2px solid var(--color-border)',
                                     marginBottom: '0.25rem'
                                 }}>
-                                    <div style={{ width: '2rem', height: '2rem', borderRadius: '50%', background: 'var(--color-slate-200)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 600 }}>
+                                    <div style={{
+                                        width: '2rem', height: '2rem', borderRadius: '50%',
+                                        background: 'color-mix(in srgb, var(--color-text-main) 14%, var(--color-bg-card))',
+                                        border: '1px solid var(--color-border)',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-text-main)'
+                                    }}>
                                         {emp.firstName[0]}{emp.lastName[0]}
                                     </div>
                                     <div>
@@ -186,7 +197,7 @@ const PositionsView = ({ positions, departments, onAdd, onEdit, onDelete }) => {
     return (
         <Card className="padding-lg">
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem' }}>
-                <h2 style={{ fontSize: '1.25rem', fontWeight: 600 }}>Job Positions</h2>
+                <h2 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Job Positions</h2>
                 <Button icon={<Plus size={16} />} onClick={onAdd}>Add Position</Button>
             </div>
 
@@ -203,9 +214,13 @@ const PositionsView = ({ positions, departments, onAdd, onEdit, onDelete }) => {
                 <tbody>
                     {positions.map(pos => (
                         <tr key={pos.id}>
-                            <td style={{ padding: '1rem', borderBottom: '1px solid var(--color-border)', fontWeight: 500 }}>{pos.title}</td>
+                            <td style={{ padding: '1rem', borderBottom: '1px solid var(--color-border)', fontWeight: 500, color: 'var(--color-text-main)' }}>{pos.title}</td>
                             <td style={{ padding: '1rem', borderBottom: '1px solid var(--color-border)' }}>{getDeptName(pos.departmentId)}</td>
-                            <td style={{ padding: '1rem', borderBottom: '1px solid var(--color-border)' }}><span style={{ background: 'var(--color-slate-100)', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.85rem' }}>Grade {pos.grade}</span></td>
+                            <td style={{ padding: '1rem', borderBottom: '1px solid var(--color-border)' }}><span style={{
+                                background: 'color-mix(in srgb, var(--color-text-main) 10%, var(--color-bg-card))',
+                                padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.85rem',
+                                color: 'var(--color-text-main)'
+                            }}>Grade {pos.grade}</span></td>
                             <td style={{ padding: '1rem', borderBottom: '1px solid var(--color-border)', textAlign: 'right' }}>
                                 <span style={{ color: 'var(--color-success)', background: 'var(--color-success-bg)', padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.85rem' }}>Active</span>
                             </td>
@@ -243,9 +258,13 @@ const DepartmentModal = ({ isOpen, onClose, onSave, department, allDepartments, 
             position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
             background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000
         }}>
-            <div style={{ background: 'white', padding: '2rem', borderRadius: 'var(--radius-lg)', width: '500px', maxWidth: '90%' }}>
+            <div style={{
+                background: 'var(--color-bg-card)', color: 'var(--color-text-main)',
+                padding: '2rem', borderRadius: 'var(--radius-lg)', width: '500px', maxWidth: '90%',
+                border: '1px solid var(--color-border)'
+            }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
-                    <h2 style={{ fontSize: '1.25rem', fontWeight: 600 }}>{department ? 'Edit Department' : 'Add Department'}</h2>
+                    <h2 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text-main)' }}>{department ? 'Edit Department' : 'Add Department'}</h2>
                     <Button variant="ghost" icon={<X size={20} />} onClick={onClose} />
                 </div>
 
@@ -255,7 +274,11 @@ const DepartmentModal = ({ isOpen, onClose, onSave, department, allDepartments, 
                     <div>
                         <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: 500 }}>Parent Department</label>
                         <select
-                            style={{ width: '100%', padding: '0.625rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}
+                            style={{
+                                width: '100%', padding: '0.625rem', borderRadius: 'var(--radius-md)',
+                                border: '1px solid var(--color-border)',
+                                background: 'var(--color-bg-surface)', color: 'var(--color-text-main)'
+                            }}
                             value={formData.parentId || ''}
                             onChange={e => setFormData({ ...formData, parentId: e.target.value || null })}
                         >
@@ -269,7 +292,11 @@ const DepartmentModal = ({ isOpen, onClose, onSave, department, allDepartments, 
                     <div>
                         <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: 500 }}>Manager (Optional)</label>
                         <select
-                            style={{ width: '100%', padding: '0.625rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}
+                            style={{
+                                width: '100%', padding: '0.625rem', borderRadius: 'var(--radius-md)',
+                                border: '1px solid var(--color-border)',
+                                background: 'var(--color-bg-surface)', color: 'var(--color-text-main)'
+                            }}
                             value={formData.managerId}
                             onChange={e => setFormData({ ...formData, managerId: e.target.value })}
                         >
@@ -310,9 +337,13 @@ const PositionModal = ({ isOpen, onClose, onSave, position, departments }) => {
             position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
             background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000
         }}>
-            <div style={{ background: 'white', padding: '2rem', borderRadius: 'var(--radius-lg)', width: '500px', maxWidth: '90%' }}>
+            <div style={{
+                background: 'var(--color-bg-card)', color: 'var(--color-text-main)',
+                padding: '2rem', borderRadius: 'var(--radius-lg)', width: '500px', maxWidth: '90%',
+                border: '1px solid var(--color-border)'
+            }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
-                    <h2 style={{ fontSize: '1.25rem', fontWeight: 600 }}>{position ? 'Edit Position' : 'Add Position'}</h2>
+                    <h2 style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-text-main)' }}>{position ? 'Edit Position' : 'Add Position'}</h2>
                     <Button variant="ghost" icon={<X size={20} />} onClick={onClose} />
                 </div>
 
@@ -322,7 +353,11 @@ const PositionModal = ({ isOpen, onClose, onSave, position, departments }) => {
                     <div>
                         <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.875rem', fontWeight: 500 }}>Department</label>
                         <select
-                            style={{ width: '100%', padding: '0.625rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}
+                            style={{
+                                width: '100%', padding: '0.625rem', borderRadius: 'var(--radius-md)',
+                                border: '1px solid var(--color-border)',
+                                background: 'var(--color-bg-surface)', color: 'var(--color-text-main)'
+                            }}
                             value={formData.departmentId}
                             onChange={e => setFormData({ ...formData, departmentId: e.target.value })}
                             required

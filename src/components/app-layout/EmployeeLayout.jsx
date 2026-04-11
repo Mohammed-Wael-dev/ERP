@@ -1,8 +1,8 @@
 import React from 'react';
 import { Outlet, Link, useNavigate } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext';
-import { useLanguage } from '../../context/LanguageContext';
-import { useAuth } from '../../context/AuthContext';
+import { useTheme } from '@/context/ThemeContext';
+import { useLanguage } from '@/context/LanguageContext';
+import { useAuth } from '@/context/AuthContext';
 import { Moon, Sun, Bell, User, LogOut } from 'lucide-react';
 
 const EmployeeHeader = () => {

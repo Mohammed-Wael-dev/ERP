@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Card from '../../../components/common/Card';
-import Button from '../../../components/common/Button';
+import Card from '@/components/Shared/Card';
+import Button from '@/components/Shared/Button';
 import { Users, UserPlus, FileText, DollarSign, Briefcase, Clock, Calendar, CreditCard, FolderOpen, FileSignature } from 'lucide-react';
 
 const HRDashboard = () => {
@@ -11,7 +11,7 @@ const HRDashboard = () => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
-                    <h1 style={{ fontSize: '1.75rem', fontWeight: 700 }}>HR & Payroll</h1>
+                    <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-text-main)' }}>HR & Payroll</h1>
                     <p style={{ color: 'var(--color-text-secondary)' }}>Manage your workforce and compensation.</p>
                 </div>
                 <div style={{ display: 'flex', gap: '1rem' }}>
@@ -28,7 +28,7 @@ const HRDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <Users size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Organization</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Organization</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Departments & Positions.</p>
                 </Card>
 
@@ -40,7 +40,7 @@ const HRDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <Users size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Employee Directory</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Employee Directory</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>View all 124 active employees.</p>
                 </Card>
 
@@ -52,7 +52,7 @@ const HRDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <CreditCard size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Payroll</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Payroll</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Process salaries and payslips.</p>
                 </Card>
 
@@ -64,7 +64,7 @@ const HRDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <FileText size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Requests & Approvals</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Requests & Approvals</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Approve leaves & docs.</p>
                 </Card>
 
@@ -76,7 +76,7 @@ const HRDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <FolderOpen size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Projects</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Projects</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Manage projects & teams.</p>
                 </Card>
 
@@ -88,7 +88,7 @@ const HRDashboard = () => {
                     <div style={{ marginBottom: '1rem', color: 'var(--color-primary-600)' }}>
                         <FileSignature size={24} />
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600 }}>Contract Templates</h3>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--color-text-main)' }}>Contract Templates</h3>
                     <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)' }}>Edit & manage contract formats.</p>
                 </Card>
             </div>
